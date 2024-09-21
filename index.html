@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>ehehehehe</title>
+
+  <link rel="stylesheet" href="styles/flexbox-center-container.css" media="all">
+  <link rel="stylesheet" href="styles/system-fonts.css" media="all">
+  <link rel="stylesheet" href="styles/style.css" media="all">
+</head>
+
+<body>
+  <canvas id=c></canvas>
+  <canvas id="confetti"></canvas>
+  <div class="container" id="count">
+    <h1 id="head">Countdown harii apaa yaa :b </h1>
+    <ul>
+      <li><span id="day"></span>days</li>
+      <li><span id="hour"></span>hours</li>
+      <li><span id="minute"></span>minutes</li>
+      <li><span id="second"></span>seconds</li>
+    </ul>
+  </div>
+  <div id="merrywrap" class="merrywrap">
+    <canvas id="snowfall"></canvas>
+    <div class="giftbox">
+      <div class="cover">
+        <div></div>
+      </div>
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <!-- Audio player hidden -->
+  <audio id="audioPlayer" style="display: none;"></audio>
+
+  <script src="scripts/confetti.min.js" charset="utf-8"></script>
+  <script src="scripts/index.js" charset="utf-8"></script>
+
+  <script>
+    // Array berisi daftar lagu
+    const songs = [
+      'song1.mp3', // Ganti dengan path lagu pertama
+      'song2.mp3', // Ganti dengan path lagu kedua
+      'song3.mp3', // Ganti dengan path lagu ketiga
+      'song4.mp3', // Ganti dengan path lagu keempat
+      'song5.mp3', // Ganti dengan path lagu kelima
+      'song6.mp3'  // Ganti dengan path lagu keenam
+    ];
+
+    let currentSong = 0;
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    // Fungsi untuk memuat dan memutar lagu
+    function loadAndPlaySong() {
+      audioPlayer.src = songs[currentSong];
+      audioPlayer.play();
+    }
+
+    // Memutar lagu pertama secara otomatis ketika halaman dimuat
+    window.onload = function () {
+      loadAndPlaySong();
+    };
+
+    // Event listener untuk mendeteksi kapan lagu selesai
+    audioPlayer.addEventListener('ended', function () {
+      // Pindah ke lagu berikutnya
+      currentSong = (currentSong + 1) % songs.length;
+      loadAndPlaySong();
+    });
+  </script>
+</body>
+
+</html>
